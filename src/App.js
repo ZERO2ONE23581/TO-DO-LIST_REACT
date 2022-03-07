@@ -15,7 +15,15 @@ function App() {
     }
     setTodo("");
     setTodos((currentArray) => [todo, ...currentArray]);
+    saveTodo();
   };
+
+  const saveTodo = () => {
+    localStorage.setItem(TODOKEY, JSON.stringify(todos));
+  };
+  const savedTodo = JSON.parse(localStorage.getItem(TODOKEY));
+  console.log(savedTodo);
+  // setTodos(savedTodo);
 
   const removeTodo = (event) => {
     const li = event.target.parentElement;
